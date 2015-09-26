@@ -1,0 +1,9 @@
+#My personal tmux doc
+
+##Panes
+*PREFIX-| create vertical pane
+*PREFIX-- create horizontal pane
+*PREFIX-o toggle panes
+*PREFIX-h select pane to the left
+_here other pane selection movements_
+

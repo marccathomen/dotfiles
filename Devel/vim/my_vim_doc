@@ -1,0 +1,12 @@
+#My personal Vim Documentation
+
+##Macros
+*q[0-9,a-z] start recording
+*q stop recording
+*@[register] execute macro in the register
+*@@ execute last macro again
+
+##Substitution
+*:s/foo/bar/g susbstitute all foo with bar only in current line (g global)
+*:%s/foo/bar/g substitutes all foo with bar in all lines (g global)
+*:%s/foo/bar/gc susbtitues all foo with bar and asks for confirmation (c confirm)
