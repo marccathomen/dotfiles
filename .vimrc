@@ -1,30 +1,54 @@
-" http://vimdoc.sourceforge.net/htmldoc/starting.html#vimrc
+"http://dougblack.io/words/a-good-vimrc.html
 
-set nocompatible        " use vim defaults
-set scrolloff=3         " keep 3 lines when scrolling
-set ai                  " set auto-indenting on for programming
+runtime! plugin/sensible.vim
 
-set clipboard=unnamed	"allow yank with y and p from vim
+execute pathogen#infect()
+filetype plugin indent on
+syntax enable
+set background=dark
+colorscheme solarized
 
-set showcmd             " display incomplete commands
-set nobackup            " do not keep a backup file
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set expandtab       " tabs are spaces
+
 set number              " show line numbers
-set ruler               " show the current row and column
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
 
-set hlsearch            " highlight searches
-set incsearch           " do incremental searching
-set showmatch           " jump to matches when entering regexp
-set ignorecase          " ignore case when searching
-set smartcase           " no ignorecase if Uppercase char present
+filetype indent on      " load filetype-specific indent files
 
-set visualbell t_vb=    " turn off error beep/flash
-set novisualbell        " turn off visual bell
+set wildmenu            " visual autocomplete for command menu
 
-set backspace=indent,eol,start  " make that backspace key work the way it should
-set runtimepath=$VIMRUNTIME     " turn off user scripts, https://github.com/igrigorik/vimgolf/issues/129
+set showmatch           " highlight matching [{()}]
 
-syntax on               " turn syntax highlighting on by default
-filetype on             " detect type of file
-filetype indent on      " load indent file for specific file type
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
 
-set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
+nnoremap <leader><space> :nohlsearch<CR> " turn off search highlight
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" " $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
+let mapleader = "\<Space>"  " set the mapleader to Space
+nnoremap <Leader>o :CtrlP<CR>   " open CtrlP
+nnoremap <Leader>w :w<CR>   " save a file
+
+" open ag.vim
+nnoremap <leader>a :Ag
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+"let g:user_emmet_expandabbr_key = '<C-Right>'
